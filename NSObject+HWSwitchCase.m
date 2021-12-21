@@ -23,7 +23,9 @@ const double  eps = 1e-8;
     if ([self isKindOfClass:[NSNumber class]]) {
         NSNumber *numKey = (NSNumber *)self;
         NSNumber *numInDic = [self findEquivalentNumber:numKey inDictionary:cases];
-        caseBlock = cases[numInDic];
+        if (numInDic) {
+            caseBlock = cases[numInDic];
+        }
     } else {
         caseBlock = cases[(id<NSCopying>)self];
     }
